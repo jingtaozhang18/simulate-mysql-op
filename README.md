@@ -17,7 +17,7 @@ Just a demo to show how to use it.
 
 ```bash
 MYSQL_USR_NAME=root
-MYSQL_USR_PASSWD=nopassword
+MYSQL_USR_PASSWD=$(kubectl get secret --namespace infra bitnami-mysql -o jsonpath="{.data.mysql-root-password}" | base64 -d)
 MYSQL_SERVER_URL=bitnami-mysql-primary.infra.svc.cluster.local
 MYSQL_SERVER_PORT=3306
 
